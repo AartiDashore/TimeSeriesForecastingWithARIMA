@@ -1,7 +1,3 @@
-Here’s a `README.md` file for the Time Series Forecasting with ARIMA project:
-
----
-
 # Time Series Forecasting with ARIMA
 
 This project demonstrates how to implement the ARIMA (AutoRegressive Integrated Moving Average) model for time series forecasting. The code trains an ARIMA model on a synthetic time series dataset, forecasts future values, and visualizes both the forecasted and historical data.
@@ -9,6 +5,7 @@ This project demonstrates how to implement the ARIMA (AutoRegressive Integrated 
 ## Table of Contents
 - [Overview](#overview)
 - [Concepts](#concepts)
+- [Explainations](#explanations)
 - [Variables and Parameters](#variables-and-parameters)
 - [Prerequisites](#prerequisites)
 - [Usage](#usage)
@@ -36,6 +33,29 @@ A stationary time series has constant statistical properties (mean, variance) ov
 
 ### Forecasting
 ARIMA models forecast future values based on past observations. The model provides predictions along with confidence intervals to account for uncertainty in the forecasts.
+
+## Explanations
+
+### Library Update:
+The previous version used the deprecated ARIMA class from statsmodels.tsa.arima_model. The updated version uses the ARIMA class from the statsmodels.tsa.arima.model module, which is the correct and more up-to-date approach.
+
+### Forecasting:
+We use the get_forecast method from the ARIMA model to obtain the forecasted values and the confidence intervals. This method provides both the predicted values and the range of uncertainty (confidence intervals).
+
+### Confidence Intervals:
+confidence_intervals gives the lower and upper confidence bounds for the forecasted values, which are plotted as a shaded region around the forecast.
+
+### ARIMA Model:
+The ARIMA class takes the time series data and the model order (p, d, q) for training, where:
+  - p: The number of autoregressive (AR) terms.
+  - d: The number of differences needed to make the series stationary.
+  - q: The number of moving average (MA) terms.
+
+### Differencing:
+We perform differencing on the time series to make it stationary, and then check stationarity using the Augmented Dickey-Fuller (ADF) test. If the series is non-stationary, it needs differencing to be made stationary.
+
+### Plotting:
+The plot shows both the historical data and the forecasted values. The confidence intervals are represented as a shaded area to indicate the uncertainty in the predictions.
 
 ## Variables and Parameters
 
@@ -88,6 +108,12 @@ pip install pandas numpy matplotlib statsmodels
 ### 1. **Historical Data and Forecasted Values**
 The plot displays the historical time series data and the forecasted values. The forecasted values are shown in red, with confidence intervals represented by a shaded region.
 
+### 2. **Forecasted Values**
+The predicted future values based on the ARIMA model.
+
+### 3. **Confidence Intervals**
+The range of uncertainty in the forecast, which is displayed as a shaded region around the forecasted values.
+
 Example plot:
 
 Auto Correlation and Partial Correlation
@@ -96,7 +122,6 @@ Auto Correlation and Partial Correlation
 Sarimax Results
 
 ![Sarimax_Results](https://github.com/AartiDashore/TimeSeriesForecastingWithARIMA/blob/main/Sarimax_results.png)
-
 
 Forecast Plot:
 
